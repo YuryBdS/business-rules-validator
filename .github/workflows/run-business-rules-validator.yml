@@ -1,0 +1,36 @@
+name: Run Business Rules Validator
+
+on:
+  workflow_dispatch:
+
+  push:
+    paths:
+      - "validator/**"
+      - "data/**"
+      - "rules/**"
+      - ".github/workflows/**"
+
+jobs:
+  run-validator:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install pandas
+
+      - name: Run business rules validator
+        run: python validator/rules_validator.py
+
+      - name: Upload validation results
+        uses: actions/upload-artifact@v7
+        with:
+          name: validation-results
+          path: outputs/validation_results.csv
