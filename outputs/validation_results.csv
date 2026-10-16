@@ -1,0 +1,11 @@
+record_id,start_date,end_date,category,discount,customer_segment,status,validation_status,violated_rules
+001,2026-10-01,2026-10-31,Standard,10,Retail,Active,VALID,
+002,2026-11-15,2026-11-01,Premium,15,Enterprise,Active,INVALID,RULE_001: Start date is greater than end date.
+003,2026-10-05,2026-10-25,,20,Unknown,Active,INVALID,RULE_003: Category is missing. | RULE_004: Invalid customer segment.
+004,2026-10-01,2026-10-31,Standard,120,Retail,Active,INVALID,RULE_002: Discount must be between 0 and 100.
+005,2026-10-10,,Premium,25,Enterprise,Active,INVALID,RULE_005: Active record must contain valid start and end dates.
+006,2026-09-01,2026-09-30,Standard,5,SMB,Inactive,VALID,
+007,2026-10-01,2026-10-31,Premium,-5,Retail,Active,INVALID,RULE_002: Discount must be between 0 and 100.
+008,2026-10-01,2026-12-31,Standard,30,Enterprise,Active,VALID,
+009,2026-10-01,2026-10-31,Standard,12,Wholesale,Active,INVALID,RULE_004: Invalid customer segment.
+010,2026-10-15,2026-10-15,Premium,50,SMB,Active,VALID,
